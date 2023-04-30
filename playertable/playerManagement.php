@@ -5,9 +5,7 @@ class Player
     public $name;
     public $age;
     public $club;
-
     public $position;
-
     public $nationality;
     function __construct($name, $age, $club, $position, $nationality)
     {
@@ -17,8 +15,6 @@ class Player
         $this->position = $position;
         $this->nationality = $nationality;
     }
-
-    
 
     function set_name($name)
     {

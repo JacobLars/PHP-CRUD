@@ -26,20 +26,18 @@ if ($result === false) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the form values
+
     $name = $_POST['name'];
     $age = $_POST['age'];
     $club = $_POST['club'];
     $position = $_POST['position'];
     $nationality = $_POST['nationality'];
 
-    // Update the record in the database
     $sql = "UPDATE players SET name='$name', age=$age, club='$club', position='$position', nationality='$nationality' WHERE id=$id";
     if ($conn->query($sql) === false) {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
-    // Redirect the user to index.php
     header("Location: index.php");
     exit;
 }
