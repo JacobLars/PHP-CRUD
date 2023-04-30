@@ -17,6 +17,9 @@ class Player
         $this->position = $position;
         $this->nationality = $nationality;
     }
+
+    
+
     function set_name($name)
     {
         $this->name = $name;
@@ -95,18 +98,22 @@ $sql = "SELECT * FROM players";
 
 $result = $conn->query($sql);
 
-if($result === false){
+if ($result === false) {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
-$table = '<table><tr><th>Name</th><th>Age</th><th>Club</th><th>Position</th><th>Nationality</th></tr>';
+$table = '<table><tr><th>Name</th><th>Age</th><th>Club</th><th>Position</th><th>Nationality</th><th>Operations</th></tr>';
 
 while ($row = $result->fetch_assoc()) {
-    $table .= '<tr class="player_row"><td>'. $row["name"] .'</td><td>' . $row["age"] . '</td><td>' . $row["club"] . '</td><td>'. $row["position"]. '</td><td>'. $row["nationality"] .  '</td></tr>';
+    $table .= '<tr class="player_row"><td>' . $row["name"] . '</td><td>' . $row["age"] . '</td><td>' . $row["club"] . '</td><td>' . $row["position"] . '</td><td>' . $row["nationality"] . '</td><td><a href="delete.php?id=' . $row["id"] . '" class="operations">Delete</a><a href="edit.php?id=' . $row["id"] . '" class="operations">Edit</a></td></tr>';
 }
 
 $table .= "</table";
 echo $table;
+
+
 $conn->close();
+
+
 
 ?>
