@@ -78,29 +78,13 @@ $dbname = "playersdb";
 $conn = new mysqli($servername, $username, $password, $dbname) or die('unable to connect');
 
 
-
-/* $sql = "INSERT INTO players (name, age, club, position, nationality) VALUES ('Bukayo Saka', '21', 'Arsenal', 'LW', 'England')";
-
-
-if ($conn->query($sql) === TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
-
-
-$conn->close(); */
-
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the form data
     $name = $_POST['name'];
     $age = $_POST['age'];
     $club = $_POST['club'];
     $position = $_POST['position'];
     $nationality = $_POST['nationality'];
 
-    // Insert the data into the database
     $sql = "INSERT INTO players(name, age, club, position, nationality) VALUES ('$name', $age, '$club', '$position', '$nationality')";
     if ($conn->query($sql) === false) {
         echo "Error: " . $sql . "<br>" . $conn->error;
